@@ -50,7 +50,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'public',
           src: ['style.css', '!*.min.css'],
-          dest: 'public',
+          dest: 'public/dist',
           ext: '.min.css'
         }]
       }      
@@ -145,8 +145,8 @@ module.exports = function(grunt) {
   grunt.registerTask('deploy', [
     // add your deploy tasks here
     'concat',
-    'uglify',
     'cssmin',
+    'uglify',
     'gitpush',
   ]);
 
