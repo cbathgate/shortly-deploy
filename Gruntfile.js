@@ -53,6 +53,26 @@ module.exports = function(grunt) {
       prodServer: {
       }
     },
+
+    gitpush: {
+      'your_target': {
+        options: {
+          remote: 'live'
+        }
+      }
+    },
+
+    // sshexec: {
+    //   connect: {
+    //     command: ['sh -c "cd /shortly-deploy; ls"'],
+    //     //
+    //     options: {
+    //       host: 'xxx.xxx.xxx.xx',
+    //       username: 'xxxx',
+    //       password: 'xXxXxXx'
+    //     }
+    //   }
+    // }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -63,6 +83,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-git');
+
+  // grunt.loadNpmTasks('grunt-ssh');
 
   grunt.registerTask('server-dev', function (target) {
     grunt.task.run([ 'nodemon', 'watch' ]);
@@ -71,6 +94,13 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
   // Main grunt tasks
   ////////////////////////////////////////////////////
+  // grunt.registerTask('nodemon', [
+  //   'nodemon'
+  // ]);
+
+  // grunt.registerTask('watch', [
+  //   'watch'
+  // ]);
 
   grunt.registerTask('test', [
     'mochaTest'
@@ -89,6 +119,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    'gitpush'
   ]);
 
 
