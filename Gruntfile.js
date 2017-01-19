@@ -118,13 +118,6 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
   // Main grunt tasks
   ////////////////////////////////////////////////////
-  // grunt.registerTask('nodemon', [
-  //   'nodemon'
-  // ]);
-
-  // grunt.registerTask('concat', [
-  //   'concat'
-  // ]);
 
   grunt.registerTask('test', [
     'mochaTest'
@@ -143,9 +136,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
-    'cssmin',
     'concat',
     'uglify',
+    'cssmin',
     'gitpush'
   ]);
 
