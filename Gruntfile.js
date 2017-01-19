@@ -81,7 +81,7 @@ module.exports = function(grunt) {
     gitpush: {
       'your_target': {
         options: {
-          remote: 'live'
+          remote: ['origin', 'live', 'anthony']
         }
       }
     },
