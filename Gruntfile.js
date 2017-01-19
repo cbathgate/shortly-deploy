@@ -28,6 +28,14 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        mangle: true
+      },
+      'my_target': {
+        files: {
+          'public/dist/built.min.js': ['public/dist/built.js']
+        }
+      }
     },
 
     eslint: {
@@ -37,6 +45,15 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+      target: {
+        files: [{
+          expand: true,
+          cwd: 'public',
+          src: ['style.css', '!*.min.css'],
+          dest: 'public/dist',
+          ext: '.min.css'
+        }]
+      }      
     },
 
     watch: {
@@ -127,7 +144,9 @@ module.exports = function(grunt) {
   grunt.registerTask('deploy', [
     // add your deploy tasks here
     'concat',
-    'gitpush'
+    'uglify',
+    'cssmin',
+    'gitpush',
   ]);
 
 
